@@ -6,13 +6,14 @@ const variants = {
   secondary: "bg-fg text-page enabled:hover:opacity-90",
   transparent:
     "bg-tint-white text-fg enabled:hover:bg-fg-secondary enabled:hover:text-white",
-  outline: "border border-fg-secondary text-fg enabled:hover:bg-tint-white",
+  outline:
+    "inset-ring-1 inset-ring-fg-secondary text-fg enabled:hover:bg-tint-white",
 } as const;
 
 const sizes = {
-  md: "h-10.5 px-5.5 text-button",
-  sm: "h-8.75 px-5.5 text-button",
-  xs: "h-7 px-3 text-label-s",
+  md: "px-5.5 py-3.25 text-button [&_svg]:size-4",
+  sm: "px-5.5 py-2.5 text-button [&_svg]:size-4",
+  xs: "px-3 py-1.5 text-label-s [&_svg]:size-4",
 } as const;
 
 export type ButtonVariant = keyof typeof variants;
@@ -31,7 +32,7 @@ export function buttonStyles({
 }: ButtonStyleOptions = {}) {
   return cn(
     "inline-flex shrink-0 items-center justify-center gap-1 rounded-full whitespace-nowrap transition duration-300 ease-out",
-    "disabled:cursor-not-allowed disabled:border-transparent disabled:bg-fg-disabled disabled:text-fg-secondary",
+    "disabled:cursor-not-allowed disabled:inset-ring-0 disabled:bg-fg-disabled disabled:text-fg-secondary",
     variants[variant],
     sizes[size],
     className,

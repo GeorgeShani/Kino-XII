@@ -6,8 +6,9 @@ const variants = {
 } as const;
 
 const sizes = {
-  md: "h-5.5 gap-1",
-  sm: "h-4.75",
+  sm: "px-2 py-[3px]",
+  md: "gap-1 px-2 py-1",
+  lg: "gap-1 px-3 py-1.5",
 } as const;
 
 interface BadgeProps extends React.ComponentProps<"span"> {
@@ -27,7 +28,7 @@ export function Badge({
   return (
     <span
       className={cn(
-        "inline-flex shrink-0 items-center rounded-full px-2 text-label-s whitespace-nowrap [&_svg]:size-3.5",
+        "inline-flex shrink-0 items-center rounded-full text-label-s whitespace-nowrap [&_svg]:size-3.5",
         variants[variant],
         sizes[size],
         className,
