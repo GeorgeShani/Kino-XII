@@ -95,4 +95,36 @@
   body {
     @apply bg-page text-body-m text-fg;
   }
+
+  body:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  dialog::backdrop {
+    background-color: color-mix(in oklab, var(--color-scrim) 70%, transparent);
+    backdrop-filter: blur(4px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes modal-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px) scale(0.98);
+    }
+  }
+
+  @keyframes backdrop-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  dialog[open] {
+    animation: modal-in 200ms ease-out;
+  }
+
+  dialog[open]::backdrop {
+    animation: backdrop-in 200ms ease-out;
+  }
 }
