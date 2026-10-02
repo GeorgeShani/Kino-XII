@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
+import Script from "next/script";
+import { themeInitScript } from "@/lib/theme/constants";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -14,8 +16,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${archivo.variable} antialiased`}>
-      <body className="flex min-h-dvh flex-col">{children}</body>
+    <html
+      lang="en"
+      data-theme="dark"
+      className={`${archivo.variable} antialiased`}
+      suppressHydrationWarning
+    >
+      <body className="flex min-h-dvh flex-col">
+        <Script id="theme-init" strategy="beforeInteractive">
+          {themeInitScript}
+        </Script>
+        {children}
+      </body>
     </html>
   );
 }
