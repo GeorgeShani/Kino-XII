@@ -3,6 +3,7 @@ import { Archivo } from "next/font/google";
 import Script from "next/script";
 import { themeInitScript } from "@/lib/theme/constants";
 import "./globals.css";
+import { Providers } from "./providers";
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -27,7 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
         </Script>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
