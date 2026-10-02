@@ -10,7 +10,7 @@ function Bootstrap() {
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    void queryClient.prefetchQuery(filterOptionsQuery);
+    queryClient.query(filterOptionsQuery).catch(() => {});
   }, [queryClient]);
 
   useSessionBootstrap();
