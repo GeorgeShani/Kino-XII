@@ -23,7 +23,7 @@ export function DayPicker({
   return (
     <div
       className={cn(
-        small ? "grid grid-cols-7 gap-1" : "flex flex-wrap gap-2",
+        small ? "grid grid-cols-7 gap-1.5" : "flex flex-wrap gap-2",
         className,
       )}
     >
@@ -42,7 +42,7 @@ export function DayPicker({
               "disabled:cursor-not-allowed disabled:opacity-40",
               small
                 ? "h-13.5 min-w-0 rounded-lg text-label-s shadow-chip"
-                : "size-20 rounded-2xl",
+                : "size-20 shrink-0 rounded-2xl",
               selected
                 ? "bg-red text-white"
                 : cn(

@@ -27,7 +27,7 @@ function getPageItems(page: number, pageCount: number): PageItem[] {
 }
 
 const buttonBase =
-  "grid size-10 place-items-center rounded-full text-body-m font-medium transition-colors duration-300 ease-out";
+  "grid size-10 shrink-0 place-items-center rounded-full text-body-m font-medium transition-colors duration-300 ease-out";
 
 const arrowButton = cn(
   buttonBase,
@@ -52,7 +52,10 @@ export function Pagination({
   return (
     <nav
       aria-label="Pagination"
-      className={cn("flex items-center gap-2", className)}
+      className={cn(
+        "flex flex-wrap items-center justify-center gap-2",
+        className,
+      )}
     >
       <button
         type="button"
