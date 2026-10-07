@@ -104,6 +104,23 @@
     @apply bg-page text-body-m text-fg;
   }
 
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [role="tab"],
+  [role="radio"]:not(:disabled),
+  a[href],
+  summary,
+  select:not(:disabled),
+  label:has(input:not(:disabled)),
+  input[type="checkbox"]:not(:disabled),
+  input[type="file"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :disabled {
+    cursor: not-allowed;
+  }
+
   body:has(dialog[open]) {
     overflow: hidden;
   }
