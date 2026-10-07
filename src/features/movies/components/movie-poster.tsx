@@ -6,10 +6,17 @@ interface MoviePosterProps {
   src: string | null;
   size: "w185" | "w342" | "w500" | "w780";
   sizes: string;
+  priority?: boolean;
   className?: string;
 }
 
-export function MoviePoster({ src, size, sizes, className }: MoviePosterProps) {
+export function MoviePoster({
+  src,
+  size,
+  sizes,
+  priority,
+  className,
+}: MoviePosterProps) {
   return (
     <div
       className={cn("relative shrink-0 overflow-hidden bg-raised", className)}
@@ -20,6 +27,7 @@ export function MoviePoster({ src, size, sizes, className }: MoviePosterProps) {
           alt=""
           fill
           sizes={sizes}
+          priority={priority}
           className="object-cover"
         />
       )}
