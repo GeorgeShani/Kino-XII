@@ -191,3 +191,22 @@ export const MoonIcon = (props: IconProps) => (
     />
   </Icon>
 );
+
+export const CarouselArrowIcon = (props: IconProps) => (
+  <svg
+    width="54"
+    height="54"
+    viewBox="0 0 54 54"
+    fill="none"
+    aria-hidden="true"
+    {...props}
+  >
+    <path
+      d="M31.2499 18.5C31.2499 18.5 22.75 24.7602 22.75 27.0001C22.75 29.24 31.25 35.5 31.25 35.5"
+      stroke="currentColor"
+      strokeWidth="2.25"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
