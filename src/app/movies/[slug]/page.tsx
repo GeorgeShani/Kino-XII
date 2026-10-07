@@ -26,7 +26,7 @@ export default async function MoviePage({
   const { slug } = await params;
 
   return (
-    <main className="flex flex-1 flex-col gap-8.5">
+    <main className="flex flex-1 flex-col gap-8.5 pb-27.5">
       <MovieDetail slug={slug} />
     </main>
   );
