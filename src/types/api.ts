@@ -115,13 +115,13 @@ export interface Movie {
   isNotified: boolean;
   isFeatured: boolean;
   fromPrice: number;
+  synopsis: string;
   ageRating: AgeRating;
   genres: Genre[];
   formats: Format[];
 }
 
 export interface MovieDetail extends Movie {
-  synopsis: string;
   director: string | null;
   cast: string | null;
   availableDates: string[];
