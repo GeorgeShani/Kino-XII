@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
 import Script from "next/script";
+import { Footer } from "@/components/layout/footer";
+import { Navbar } from "@/components/layout/navbar";
 import { themeInitScript } from "@/lib/theme/constants";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -24,11 +26,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${archivo.variable} antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-dvh flex-col">
+      <body className="relative flex min-h-dvh flex-col">
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
         </Script>
-        <Providers>{children}</Providers>
+        <Providers>
+          <Navbar />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
