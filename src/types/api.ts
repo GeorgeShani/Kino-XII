@@ -194,7 +194,7 @@ export interface SeatSection {
 
 export interface SeatMap {
   sessionId: number;
-  hall: Hall & { venue: Venue };
+  hall: Hall & { venue: VenueSummary };
   sections: SeatSection[];
 }
 
