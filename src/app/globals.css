@@ -45,6 +45,7 @@
   --color-transparent: transparent;
   --color-current: currentColor;
   --color-white: #ffffff;
+  --color-black: #000000;
 
   --color-page: #070c1c;
   --color-card: #1e2031;
@@ -62,7 +63,7 @@
   --color-tint-red: #ec30131a;
   --color-tint-green: #4ade801a;
 
-  --color-scrim: #070c1c;
+  --color-scrim: #101010;
   --color-shadow: #00000033;
 
   --shadow-modal: 0 20px 50px -10px var(--color-shadow);
@@ -105,8 +106,8 @@
   }
 
   dialog::backdrop {
-    background-color: color-mix(in oklab, var(--color-scrim) 70%, transparent);
-    backdrop-filter: blur(4px);
+    background-color: color-mix(in oklab, var(--color-scrim) 30%, transparent);
+    backdrop-filter: blur(5px);
   }
 }
 

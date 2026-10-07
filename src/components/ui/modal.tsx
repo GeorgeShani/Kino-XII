@@ -68,7 +68,7 @@ export function Modal({
             </button>
           )}
           {(title || description) && (
-            <header className="flex flex-col gap-1 pr-10">
+            <header className="flex flex-col gap-2 pr-10">
               {title && (
                 <h2 id={titleId} className="text-h2">
                   {title}
