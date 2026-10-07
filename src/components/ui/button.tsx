@@ -2,10 +2,11 @@ import { cn } from "@/lib/utils/cn";
 import { Spinner } from "./spinner";
 
 const variants = {
-  primary: "bg-red text-white enabled:hover:brightness-110",
-  secondary: "bg-fg text-page enabled:hover:opacity-90",
+  primary:
+    "bg-red text-white enabled:hover:shadow-[0_0_26px_#ec30131f] enabled:hover:inset-ring-1 enabled:hover:inset-ring-[#ea5038]",
+  secondary: "bg-fg text-page",
   transparent:
-    "bg-tint-white text-fg enabled:hover:bg-fg-secondary enabled:hover:text-white",
+    "bg-tint-white text-fg enabled:hover:bg-fg-secondary enabled:hover:text-white enabled:hover:backdrop-blur-[22px]",
   outline:
     "inset-ring-1 inset-ring-fg-secondary text-fg enabled:hover:bg-tint-white",
 } as const;
