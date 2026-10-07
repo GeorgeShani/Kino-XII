@@ -23,7 +23,7 @@ export function SessionTimeCard({
       type="button"
       disabled={session.isSoldOut || ageBlocked}
       onClick={() => onSelect(session)}
-      className="flex h-26 w-63 shrink-0 flex-col gap-3 rounded-2xl bg-card p-3.75 text-left transition-shadow duration-300 ease-out enabled:hover:shadow-card-hover disabled:cursor-not-allowed disabled:opacity-40"
+      className="flex h-26 w-63 shrink-0 flex-col gap-3 rounded-2xl bg-card p-3.75 text-left disabled:cursor-not-allowed disabled:opacity-40"
     >
       <span className="flex items-center justify-between gap-3">
         <span className="text-h3">{session.time}</span>

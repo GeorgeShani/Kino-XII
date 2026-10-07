@@ -35,11 +35,9 @@ export function SessionTicket({
         onClick={() => onSelect(session)}
         style={{ maskImage: NOTCH_MASK, maskComposite: "intersect" }}
         className={cn(
-          "relative flex h-20.25 w-51.75 rounded-xl text-left transition-[background-color,box-shadow,filter] duration-300 ease-out",
+          "relative flex h-20.25 w-51.75 rounded-xl text-left transition-[background-color,box-shadow] duration-300 ease-out",
           "disabled:cursor-not-allowed disabled:opacity-40",
-          selected
-            ? "bg-card inset-ring-1 inset-ring-red"
-            : "bg-page enabled:hover:brightness-125",
+          selected ? "bg-card inset-ring-1 inset-ring-red" : "bg-page",
         )}
       >
         <span className="flex w-31 flex-col items-center justify-center gap-2 py-3.75">
