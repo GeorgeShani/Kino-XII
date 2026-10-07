@@ -7,8 +7,8 @@ import { DayPicker } from "@/components/ui/day-picker";
 import { EmptyState } from "@/components/ui/empty-state";
 import { ErrorState } from "@/components/ui/error-state";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useIsAgeBlocked } from "@/features/auth/age-gate";
 import { requireAuth } from "@/features/auth/gate";
-import { useAuthStore } from "@/features/auth/store";
 import { getNextDays } from "@/lib/utils/date";
 import type { MovieDetail, Session } from "@/types/api";
 import { movieSessionsQuery } from "../../hooks";
@@ -38,7 +38,6 @@ function SessionsSkeleton() {
 }
 
 export function SessionsSection({ movie }: { movie: MovieDetail }) {
-  const user = useAuthStore((state) => state.user);
   const [dateParam, setDateParam] = useQueryState("date", parseAsString);
   const [sessionId, setSessionId] = useQueryState("session", parseAsInteger);
 
@@ -66,7 +65,7 @@ export function SessionsSection({ movie }: { movie: MovieDetail }) {
     enabled: date !== null,
   });
 
-  const ageBlocked = user?.age != null && user.age < movie.ageRating.minAge;
+  const ageBlocked = useIsAgeBlocked(movie.ageRating);
 
   const handleSelect = (session: Session) =>
     requireAuth(() => setSessionId(session.id));
