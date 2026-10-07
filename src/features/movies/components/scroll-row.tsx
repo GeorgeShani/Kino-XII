@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useDragScroll } from "@/lib/hooks/use-drag-scroll";
 import { cn } from "@/lib/utils/cn";
 
 interface ScrollRowProps {
@@ -12,6 +13,8 @@ export function ScrollRow({ gap, children }: ScrollRowProps) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [hasMore, setHasMore] = useState(false);
+
+  useDragScroll(scrollerRef);
 
   const update = useCallback(() => {
     const scroller = scrollerRef.current;
@@ -38,7 +41,7 @@ export function ScrollRow({ gap, children }: ScrollRowProps) {
       <div
         ref={scrollerRef}
         onScroll={update}
-        className="-my-2 overflow-x-auto py-2 pr-4 [scrollbar-color:var(--color-raised)_transparent] [scrollbar-width:thin] sm:pr-8 xl:pr-17.5"
+        className="-my-2 overflow-x-auto py-2 pr-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:pr-8 xl:pr-17.5"
       >
         <div ref={trackRef} className={cn("flex w-max", gap)}>
           {children}
