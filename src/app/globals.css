@@ -63,6 +63,7 @@
   --color-tint-white: #ffffff1a;
   --color-tint-red: #ec30131a;
   --color-tint-green: #4ade801a;
+  --color-tint-orange: #e27e041a;
 
   --color-scrim: #101010;
   --color-shadow: #00000033;
@@ -96,6 +97,7 @@
 
     --color-tint-white: #00000014;
     --color-tint-green: #16a34a1a;
+    --color-tint-orange: #c26a001a;
   }
 
   body {

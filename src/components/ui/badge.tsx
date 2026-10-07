@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils/cn";
 const variants = {
   neutral: "bg-tint-white text-fg",
   red: "bg-tint-red text-red",
+  orange: "bg-tint-orange text-orange",
 } as const;
 
 const sizes = {
