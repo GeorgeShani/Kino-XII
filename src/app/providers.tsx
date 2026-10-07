@@ -2,9 +2,10 @@
 
 import { QueryClientProvider, useQueryClient } from "@tanstack/react-query";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { AuthModals } from "@/features/auth/components/auth-modals";
 import { useSessionBootstrap } from "@/features/auth/hooks";
+import { BookingHost } from "@/features/booking/components/booking-host";
 import { filterOptionsQuery } from "@/features/sessions/hooks";
 import { createQueryClient } from "@/lib/query/query-client";
 
@@ -29,6 +30,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
         <Bootstrap />
         {children}
         <AuthModals />
+        <Suspense>
+          <BookingHost />
+        </Suspense>
       </QueryClientProvider>
     </NuqsAdapter>
   );
