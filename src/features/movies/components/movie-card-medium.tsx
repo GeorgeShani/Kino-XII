@@ -7,7 +7,7 @@ import { NotifyButton } from "./notify-button";
 
 export function MovieCardMedium({ movie }: { movie: Movie }) {
   return (
-    <article className="flex h-40 w-117.5 shrink-0 gap-4.5 rounded-[20px] bg-card p-3.5 shadow-card inset-ring-1 inset-ring-transparent transition-shadow duration-300 ease-out hover:shadow-card-hover hover:inset-ring-raised">
+    <article className="flex h-40 w-117.5 shrink-0 gap-4.5 rounded-[20px] bg-card p-3.5 shadow-card inset-ring-1 inset-ring-transparent hover:shadow-card-hover hover:inset-ring-raised">
       <Link
         href={`/movies/${movie.slug}`}
         tabIndex={-1}

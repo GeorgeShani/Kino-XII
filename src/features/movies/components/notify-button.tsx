@@ -15,7 +15,7 @@ export function NotifyButton({ slug, notified }: NotifyButtonProps) {
 
   if (notified) {
     return (
-      <output className="inline-flex items-center gap-1 self-start rounded-full bg-tint-green px-3 py-1.5 text-label-s text-green">
+      <output className="inline-flex items-center gap-1 self-start rounded-full bg-tint-white px-3 py-1.5 text-label-s text-fg inset-ring-1 inset-ring-fg-secondary">
         <CheckIcon className="size-4" />
         Reminder set
       </output>
