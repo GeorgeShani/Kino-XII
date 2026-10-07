@@ -50,9 +50,7 @@ export function DayPicker({
                   )
                 : cn(
                     "text-fg",
-                    small
-                      ? "bg-raised enabled:hover:bg-card"
-                      : "bg-card enabled:hover:bg-raised",
+                    small ? "bg-raised enabled:hover:bg-card" : "bg-card",
                   ),
             )}
           >
