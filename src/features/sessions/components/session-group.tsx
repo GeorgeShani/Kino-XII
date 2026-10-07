@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { useIsAgeBlocked } from "@/features/auth/age-gate";
 import { MoviePoster } from "@/features/movies/components/movie-poster";
+import { useDragScroll } from "@/lib/hooks/use-drag-scroll";
 import type { Session, SessionGroup as SessionGroupData } from "@/types/api";
 import { SessionTimeCard } from "./session-time-card";
 
@@ -14,6 +16,8 @@ export function SessionGroup({ group, onSelect }: SessionGroupProps) {
   const { movie, sessions } = group;
   const ageBlocked = useIsAgeBlocked(movie.ageRating);
   const href = `/movies/${movie.slug}`;
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  useDragScroll(scrollerRef);
 
   return (
     <section className="flex flex-col gap-3.5">
@@ -41,7 +45,10 @@ export function SessionGroup({ group, onSelect }: SessionGroupProps) {
         </div>
       </div>
 
-      <div className="-mb-2 overflow-x-auto pb-2 [scrollbar-color:var(--color-raised)_transparent] [scrollbar-width:thin]">
+      <div
+        ref={scrollerRef}
+        className="-mb-2 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
         <div className="flex w-max gap-3">
           {sessions.map((session) => (
             <SessionTimeCard
