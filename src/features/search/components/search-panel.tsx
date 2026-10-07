@@ -71,7 +71,7 @@ function ResultRow({
         href={`/movies/${movie.slug}`}
         onClick={onNavigate}
         data-search-result=""
-        className="flex h-18 items-center gap-3.5 rounded-[10px] py-2 pr-5 pl-2.5 outline-none transition-colors duration-200 hover:bg-tint-white focus-visible:bg-tint-white"
+        className="group/row flex h-18 items-center gap-3.5 rounded-[10px] py-2 pr-5 pl-2.5 outline-none transition-colors duration-200 hover:bg-tint-white focus-visible:bg-tint-white"
       >
         <span className="relative h-14 w-10 shrink-0 overflow-hidden rounded-md bg-raised">
           {movie.posterUrl && (
@@ -100,6 +100,7 @@ function ResultRow({
             from {formatPrice(movie.fromPrice, false)}
           </span>
         )}
+        <span className="hidden h-5 shrink-0 items-center rounded-sm px-1.5 text-label-s text-fg-secondary inset-ring-1 inset-ring-fg after:content-['↵'] group-hover/row:inline-flex group-focus-visible/row:inline-flex" />
       </Link>
     </li>
   );
