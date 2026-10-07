@@ -32,8 +32,12 @@ export function Modal({
     const dialog = dialogRef.current;
     if (!dialog) return;
 
-    if (open && !dialog.open) dialog.showModal();
-    else if (!open && dialog.open) dialog.close();
+    if (open && !dialog.open) {
+      dialog.showModal();
+      dialog.querySelector<HTMLElement>("[data-autofocus]")?.focus();
+    } else if (!open && dialog.open) {
+      dialog.close();
+    }
   }, [open]);
 
   return (
@@ -53,7 +57,7 @@ export function Modal({
       {open && (
         <div
           className={cn(
-            "relative flex max-h-[calc(100dvh-2rem)] max-w-full flex-col gap-6 overflow-y-auto rounded-[28px] border border-raised bg-page p-6 shadow-modal sm:p-8",
+            "relative flex max-h-[calc(100dvh-2rem)] max-w-full flex-col gap-6 overflow-y-auto rounded-[28px] bg-page inset-ring-1 inset-ring-raised p-6 shadow-modal sm:p-8",
             className,
           )}
         >
