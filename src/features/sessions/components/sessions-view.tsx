@@ -7,7 +7,7 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { ErrorState } from "@/components/ui/error-state";
 import { Pagination } from "@/components/ui/pagination";
 import { Skeleton } from "@/components/ui/skeleton";
-import { requireAuth } from "@/features/auth/gate";
+import { startBooking } from "@/features/booking/start-booking";
 import { cn } from "@/lib/utils/cn";
 import { getNextDays } from "@/lib/utils/date";
 import type { Session } from "@/types/api";
@@ -101,7 +101,7 @@ export function SessionsView() {
   };
 
   const handleSelect = (session: Session) =>
-    requireAuth(() => setSessionId(session.id));
+    startBooking(session.id, setSessionId);
 
   const renderGroups = () => {
     if (isPending || isPlaceholderData) return <GroupsSkeleton />;

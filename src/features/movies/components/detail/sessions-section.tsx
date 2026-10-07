@@ -8,7 +8,7 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { ErrorState } from "@/components/ui/error-state";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useIsAgeBlocked } from "@/features/auth/age-gate";
-import { requireAuth } from "@/features/auth/gate";
+import { startBooking } from "@/features/booking/start-booking";
 import { getNextDays } from "@/lib/utils/date";
 import type { MovieDetail, Session } from "@/types/api";
 import { movieSessionsQuery } from "../../hooks";
@@ -68,7 +68,7 @@ export function SessionsSection({ movie }: { movie: MovieDetail }) {
   const ageBlocked = useIsAgeBlocked(movie.ageRating);
 
   const handleSelect = (session: Session) =>
-    requireAuth(() => setSessionId(session.id));
+    startBooking(session.id, setSessionId);
 
   const renderSessions = () => {
     if (date === null) {
