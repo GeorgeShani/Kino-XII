@@ -56,7 +56,7 @@ export function SeatButton({
       }`}
       onClick={() => onToggle(seat)}
       className={cn(
-        "grid size-(--seat) shrink-0 place-items-center rounded-[10px] text-label-m transition-colors duration-300 ease-out @min-[44rem]:text-h3",
+        "grid size-(--seat) shrink-0 place-items-center rounded-[10px] text-label-m @min-[44rem]:text-h3",
         "disabled:cursor-not-allowed",
         selected && interactive ? styles.selected : styles.idle,
       )}
