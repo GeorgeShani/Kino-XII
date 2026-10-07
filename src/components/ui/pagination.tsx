@@ -72,7 +72,7 @@ export function Pagination({
           <span
             // biome-ignore lint/suspicious/noArrayIndexKey: ellipsis has no stable identity
             key={`ellipsis-${index}`}
-            className={cn(buttonBase, "text-fg-secondary")}
+            className={cn(buttonBase, "bg-card text-fg-secondary")}
           >
             …
           </span>
@@ -87,7 +87,7 @@ export function Pagination({
               buttonBase,
               item === page
                 ? "bg-red text-white"
-                : "text-fg-secondary hover:bg-raised",
+                : "bg-card text-fg-secondary hover:bg-raised",
             )}
           >
             {item}
