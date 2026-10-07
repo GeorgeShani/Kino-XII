@@ -26,6 +26,7 @@ export interface Language {
   id: number;
   slug: string;
   name: string;
+  code: string;
 }
 
 export interface Genre {
@@ -41,6 +42,8 @@ export interface Venue {
   city: string;
   formats: Format[];
 }
+
+export type VenueSummary = Omit<Venue, "formats">;
 
 export interface Hall {
   id: number;
@@ -137,7 +140,7 @@ export interface Session {
   seatsLeft: number;
   isSoldOut: boolean;
   hall: Hall;
-  venue: Venue;
+  venue: VenueSummary;
   format: Format;
   language: Language;
 }
@@ -147,7 +150,7 @@ export interface SessionWithMovie extends Session {
 }
 
 export interface VenueSessions {
-  venue: Venue;
+  venue: VenueSummary;
   sessions: Session[];
 }
 
