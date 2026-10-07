@@ -210,3 +210,29 @@ export const CarouselArrowIcon = (props: IconProps) => (
     />
   </svg>
 );
+
+export const PopcornIcon = (props: IconProps) => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+    {...props}
+  >
+    <path
+      d="M5.5 10.5L7 20.5C7.1 21.1 7.6 21.5 8.2 21.5H15.8C16.4 21.5 16.9 21.1 17 20.5L18.5 10.5M10 10.5L10.5 21.5M14 10.5L13.5 21.5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M5.5 10.5C4.1 10.5 3 9.4 3 8C3 6.8 3.8 5.8 4.9 5.6C4.9 4.2 6 3 7.5 3C8 3 8.5 3.1 8.9 3.4C9.4 2.5 10.6 2 12 2C13.4 2 14.6 2.5 15.1 3.4C15.5 3.1 16 3 16.5 3C18 3 19.1 4.2 19.1 5.6C20.2 5.8 21 6.8 21 8C21 9.4 19.9 10.5 18.5 10.5H5.5Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
