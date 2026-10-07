@@ -128,8 +128,8 @@ export function BookingModal({ sessionId, onClose }: BookingModalProps) {
               inert={onCheckout}
               aria-hidden={onCheckout}
               className={cn(
-                "col-start-1 row-start-1",
-                onCheckout && "invisible",
+                "col-start-1 row-start-1 transition-opacity duration-300 ease-out",
+                onCheckout && "pointer-events-none opacity-0",
               )}
             >
               <SeatMap
@@ -144,8 +144,8 @@ export function BookingModal({ sessionId, onClose }: BookingModalProps) {
                 inert={!onCheckout}
                 aria-hidden={!onCheckout}
                 className={cn(
-                  "col-start-1 row-start-1",
-                  !onCheckout && "invisible",
+                  "col-start-1 row-start-1 transition-opacity duration-300 ease-out",
+                  !onCheckout && "pointer-events-none opacity-0",
                 )}
               >
                 <CheckoutForm
@@ -166,7 +166,10 @@ export function BookingModal({ sessionId, onClose }: BookingModalProps) {
 
         <div className="hidden w-px shrink-0 rounded-full bg-card lg:block" />
 
-        <div className="flex flex-col lg:w-80.25 lg:shrink-0">
+        <div
+          key={state.step}
+          className="flex flex-col motion-safe:animate-[step-in_300ms_ease-out] lg:w-80.25 lg:shrink-0"
+        >
           {onCheckout ? (
             <CheckoutSummary
               session={sessionData}

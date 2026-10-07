@@ -18,7 +18,7 @@ export function Confirmation({
   const { session } = order;
 
   return (
-    <div className="flex min-h-133.75 flex-col items-center justify-center gap-4 py-6 text-center">
+    <div className="flex min-h-133.75 flex-col items-center justify-center gap-4 py-6 text-center motion-safe:animate-[step-in_300ms_ease-out]">
       <span className="grid size-14 place-items-center rounded-full bg-green text-page">
         <CheckIcon className="size-7 [&_path]:stroke-[2.5]" />
       </span>
