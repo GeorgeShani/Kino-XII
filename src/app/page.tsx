@@ -1,9 +1,10 @@
-export default function Home() {
+import { FeaturedHero } from "@/features/movies/components/featured-hero";
+
+export default function HomePage() {
   return (
-    <main className="flex flex-1 items-center justify-center">
-      <h1 className="text-display">
-        KINO <span className="text-red">XII</span>
-      </h1>
+    <main className="flex flex-col gap-8 pb-4">
+      <h1 className="sr-only">Kino XII</h1>
+      <FeaturedHero />
     </main>
   );
 }
