@@ -1,5 +1,10 @@
 import { apiClient, unwrap } from "@/lib/api/client";
-import type { ApiResponse, Movie } from "@/types/api";
+import type {
+  ApiResponse,
+  Movie,
+  MovieDetail,
+  VenueSessions,
+} from "@/types/api";
 
 interface ListParams {
   limit?: number;
@@ -25,4 +30,21 @@ export const notifyMovie = (slug: string) =>
     .post<ApiResponse<{ movieId: number; subscribed: boolean }>>(
       `/movies/${slug}/notify`,
     )
+    .then(unwrap);
+
+export const fetchMovie = (slug: string, signal?: AbortSignal) =>
+  apiClient
+    .get<ApiResponse<MovieDetail>>(`/movies/${slug}`, { signal })
+    .then(unwrap);
+
+export const fetchMovieSessions = (
+  slug: string,
+  date: string,
+  signal?: AbortSignal,
+) =>
+  apiClient
+    .get<ApiResponse<VenueSessions[]>>(`/movies/${slug}/sessions`, {
+      params: { date },
+      signal,
+    })
     .then(unwrap);
