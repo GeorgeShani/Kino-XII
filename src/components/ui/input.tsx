@@ -39,7 +39,8 @@ export function Input({
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? fieldErrorId(inputId) : undefined}
         className={cn(
-          "min-w-0 flex-1 bg-transparent text-label-s text-fg outline-none",
+          "min-w-0 flex-1 bg-transparent text-label-s outline-none",
+          error ? "text-red" : "text-fg",
           "placeholder:text-fg-secondary disabled:cursor-not-allowed",
         )}
         {...props}
