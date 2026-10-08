@@ -7,11 +7,17 @@ import { cn } from "@/lib/utils/cn";
 
 interface AvatarUploadProps {
   value?: File;
+  currentUrl?: string | null;
   onChange: (file: File | undefined) => void;
   error?: string;
 }
 
-export function AvatarUpload({ value, onChange, error }: AvatarUploadProps) {
+export function AvatarUpload({
+  value,
+  currentUrl,
+  onChange,
+  error,
+}: AvatarUploadProps) {
   const [previewUrl, setPreviewUrl] = useState<string>();
 
   useEffect(() => {
@@ -43,9 +49,9 @@ export function AvatarUpload({ value, onChange, error }: AvatarUploadProps) {
             "peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-red",
           )}
         >
-          {previewUrl ? (
+          {previewUrl || currentUrl ? (
             <Image
-              src={previewUrl}
+              src={previewUrl ?? currentUrl ?? ""}
               alt="Avatar preview"
               width={40}
               height={40}
