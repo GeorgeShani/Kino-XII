@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
 import { toApiError } from "@/lib/api/errors";
+import { useSingleFlightMutate } from "@/lib/hooks/use-single-flight-mutate";
 import { formatPrice } from "@/lib/utils/price";
 import type { Order } from "@/types/api";
 import { useRefundOrder } from "../hooks";
@@ -13,7 +14,9 @@ interface RefundModalProps {
 }
 
 export function RefundModal({ order, onClose }: RefundModalProps) {
-  const { mutate, isPending, error, reset } = useRefundOrder();
+  const mutation = useRefundOrder();
+  const mutate = useSingleFlightMutate(mutation);
+  const { isPending, error, reset } = mutation;
 
   const close = () => {
     if (isPending) return;

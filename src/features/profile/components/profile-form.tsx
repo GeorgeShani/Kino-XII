@@ -15,6 +15,7 @@ import {
   formatMobileNumber,
   normalizeMobileNumber,
 } from "@/lib/forms/masks";
+import { useSingleFlightMutate } from "@/lib/hooks/use-single-flight-mutate";
 import type { User } from "@/types/api";
 import { getEligibilityMessage } from "../eligibility";
 import { useUpdateProfile } from "../hooks";
@@ -30,7 +31,9 @@ const toFormValues = (user: User): ProfileValues => ({
 
 export function ProfileForm({ user }: { user: User }) {
   const { data: options } = useFilterOptions();
-  const { mutate, isPending } = useUpdateProfile();
+  const mutation = useUpdateProfile();
+  const mutate = useSingleFlightMutate(mutation);
+  const { isPending } = mutation;
   const [formError, setFormError] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
 
