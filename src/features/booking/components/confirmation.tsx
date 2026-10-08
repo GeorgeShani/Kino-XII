@@ -8,13 +8,7 @@ import type { Order } from "@/types/api";
 import { summarizeTickets } from "../pricing";
 import { SummaryRow } from "./checkout-summary";
 
-export function Confirmation({
-  order,
-  onClose,
-}: {
-  order: Order;
-  onClose: () => void;
-}) {
+export function Confirmation({ order }: { order: Order }) {
   const { session } = order;
 
   return (
@@ -68,14 +62,12 @@ export function Confirmation({
       <div className="flex flex-wrap items-center justify-center gap-3">
         <Link
           href="/profile?tab=tickets"
-          onClick={onClose}
           className={buttonStyles({ variant: "primary", size: "sm" })}
         >
           View my tickets
         </Link>
         <Link
           href="/"
-          onClick={onClose}
           className={buttonStyles({ variant: "transparent", size: "sm" })}
         >
           Back to home

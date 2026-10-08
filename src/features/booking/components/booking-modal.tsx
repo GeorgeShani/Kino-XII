@@ -3,9 +3,12 @@
 import { format, parseISO } from "date-fns";
 import Link from "next/link";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { EmptyState } from "@/components/ui/empty-state";
 import { ErrorState } from "@/components/ui/error-state";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAuthStore } from "@/features/auth/store";
+import { toApiError } from "@/lib/api/errors";
 import { cn } from "@/lib/utils/cn";
 import { getSubtotal } from "../pricing";
 import { useBookingFlow } from "../use-booking-flow";
@@ -52,6 +55,22 @@ export function BookingModal({ sessionId, onClose }: BookingModalProps) {
 
   const { state, session, seatMap, options } = flow;
 
+  const loadError = session.error ?? seatMap.error;
+
+  if (loadError && toApiError(loadError).kind === "not-found") {
+    return (
+      <EmptyState
+        title="This session is not available"
+        description="It may have been cancelled or the link is out of date."
+        action={
+          <Button variant="transparent" onClick={onClose}>
+            Close
+          </Button>
+        }
+      />
+    );
+  }
+
   if (session.isError || seatMap.isError) {
     return (
       <ErrorState
@@ -70,7 +89,7 @@ export function BookingModal({ sessionId, onClose }: BookingModalProps) {
   const { minAge } = sessionData.movie.ageRating;
 
   if (state.step === "confirmed" && state.order) {
-    return <Confirmation order={state.order} onClose={onClose} />;
+    return <Confirmation order={state.order} />;
   }
 
   const total = state.hold
@@ -116,7 +135,7 @@ export function BookingModal({ sessionId, onClose }: BookingModalProps) {
             >
               {state.notice.message}{" "}
               {state.notice.profileLink && (
-                <Link href="/profile" onClick={onClose} className="underline">
+                <Link href="/profile" className="underline">
                   Go to your profile
                 </Link>
               )}
@@ -156,7 +175,7 @@ export function BookingModal({ sessionId, onClose }: BookingModalProps) {
                   }}
                   onValidChange={setFormValid}
                   onSubmit={(input, onError) =>
-                    flow.orderMutation.mutate(input, { onError })
+                    flow.submitOrder(input, { onError })
                   }
                 />
               </div>
