@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Modal } from "@/components/ui/modal";
 import { applyApiErrors } from "@/lib/forms/apply-api-errors";
+import { useSingleFlightMutate } from "@/lib/hooks/use-single-flight-mutate";
 import { useLogin } from "../mutations";
 import { type LoginValues, loginSchema } from "../schemas";
 import { useAuthStore } from "../store";
@@ -14,7 +15,9 @@ import { useAuthStore } from "../store";
 function LoginForm() {
   const openModal = useAuthStore((state) => state.openModal);
   const [formError, setFormError] = useState<string | null>(null);
-  const { mutate, isPending } = useLogin();
+  const mutation = useLogin();
+  const mutate = useSingleFlightMutate(mutation);
+  const { isPending } = mutation;
 
   const {
     register,

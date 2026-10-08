@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Modal } from "@/components/ui/modal";
 import { applyApiErrors } from "@/lib/forms/apply-api-errors";
+import { useSingleFlightMutate } from "@/lib/hooks/use-single-flight-mutate";
 import { useRegister } from "../mutations";
 import { type RegisterValues, registerSchema } from "../schemas";
 import { useAuthStore } from "../store";
@@ -15,7 +16,9 @@ import { AvatarUpload } from "./avatar-upload";
 function RegisterForm() {
   const openModal = useAuthStore((state) => state.openModal);
   const [formError, setFormError] = useState<string | null>(null);
-  const { mutate, isPending } = useRegister();
+  const mutation = useRegister();
+  const mutate = useSingleFlightMutate(mutation);
+  const { isPending } = mutation;
 
   const {
     register,
