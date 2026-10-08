@@ -4,7 +4,7 @@ export const SEAT_SIZE = 52;
 export const SEAT_GAP = 8;
 export const AISLE_WIDTH = 16;
 export const ROW_LABEL_WIDTH = 20;
-export const MIN_SEAT_SIZE = 28;
+export const MIN_SEAT_SIZE = 36;
 
 export function getSectionLabel(section: SeatSection) {
   const first = section.rows[0]?.label;
