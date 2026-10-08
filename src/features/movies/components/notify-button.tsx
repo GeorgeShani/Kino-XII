@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { BellIcon, CheckIcon } from "@/components/ui/icons";
 import { requireAuth } from "@/features/auth/gate";
+import { useSingleFlightMutate } from "@/lib/hooks/use-single-flight-mutate";
 import { useNotifyMovie } from "../hooks";
 
 interface NotifyButtonProps {
@@ -11,7 +12,9 @@ interface NotifyButtonProps {
 }
 
 export function NotifyButton({ slug, notified }: NotifyButtonProps) {
-  const { mutate, isPending, isError } = useNotifyMovie();
+  const mutation = useNotifyMovie();
+  const mutate = useSingleFlightMutate(mutation);
+  const { isPending, isError } = mutation;
 
   if (notified) {
     return (
