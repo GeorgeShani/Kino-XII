@@ -32,7 +32,7 @@ export function Select({
         id={selectId}
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? fieldErrorId(selectId) : undefined}
-        className="min-w-0 flex-1 cursor-pointer appearance-none bg-transparent pr-6 text-label-s text-fg outline-none"
+        className="min-w-0 flex-1 cursor-pointer appearance-none bg-transparent pr-6 text-label-s text-fg outline-none has-[option[value='']:checked]:text-fg-secondary"
         {...props}
       >
         {children}
