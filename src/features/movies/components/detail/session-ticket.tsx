@@ -54,7 +54,7 @@ export function SessionTicket({
 
         <span
           aria-hidden="true"
-          className="absolute top-2.75 left-31 h-14.75 w-[1.5px] bg-[repeating-linear-gradient(to_bottom,#fff_0_3px,transparent_3px_7px)]"
+          className="absolute top-2.75 left-31 h-14.75 w-[1.5px] bg-[repeating-linear-gradient(to_bottom,var(--color-fg)_0_3px,transparent_3px_7px)]"
         />
 
         <span className="flex w-20.75 flex-col items-center justify-center gap-2 px-3.75 py-2.5">

@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils/cn";
 import type { Seat, SeatState } from "@/types/api";
 
 const HATCH =
-  "bg-[repeating-linear-gradient(135deg,rgb(255_255_255/0.1)_0_4px,transparent_4px_8px)]";
+  "bg-[repeating-linear-gradient(135deg,color-mix(in_oklab,var(--color-fg)_10%,transparent)_0_4px,transparent_4px_8px)]";
 
 const STATE_STYLES: Record<
   Exclude<SeatState, "unavailable">,
