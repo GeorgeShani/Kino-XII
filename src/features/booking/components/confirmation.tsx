@@ -67,7 +67,7 @@ export function Confirmation({
 
       <div className="flex flex-wrap items-center justify-center gap-3">
         <Link
-          href="/profile/tickets"
+          href="/profile?tab=tickets"
           onClick={onClose}
           className={buttonStyles({ variant: "primary", size: "sm" })}
         >
