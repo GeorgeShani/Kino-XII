@@ -3,6 +3,7 @@ import { useCallback, useEffect, useReducer, useRef } from "react";
 import { moviesKeys } from "@/features/movies/hooks";
 import { useFilterOptions } from "@/features/sessions/hooks";
 import { toApiError } from "@/lib/api/errors";
+import { useSingleFlightMutate } from "@/lib/hooks/use-single-flight-mutate";
 import type { Order, Seat, SeatHold, TicketTypeSlug } from "@/types/api";
 import {
   createHold,
@@ -181,6 +182,9 @@ export function useBookingFlow(sessionId: number) {
     },
   });
 
+  const holdMutate = useSingleFlightMutate(holdMutation);
+  const orderMutate = useSingleFlightMutate(orderMutation);
+
   const toggleSeat = (seat: Seat) =>
     dispatch({
       type: "toggle-seat",
@@ -212,7 +216,7 @@ export function useBookingFlow(sessionId: number) {
       dispatch({ type: "go-to", step: "checkout" });
       return;
     }
-    holdMutation.mutate();
+    holdMutate(undefined);
   };
 
   const goToSeats = () => dispatch({ type: "go-to", step: "seats" });
@@ -225,6 +229,7 @@ export function useBookingFlow(sessionId: number) {
     remainingMs,
     holdMutation,
     orderMutation,
+    submitOrder: orderMutate,
     toggleSeat,
     removeSeat,
     setTicketType,
