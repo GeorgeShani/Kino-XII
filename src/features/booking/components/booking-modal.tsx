@@ -114,9 +114,9 @@ export function BookingModal({ sessionId, onClose }: BookingModalProps) {
           <h2 className="text-h2 uppercase">{sessionData.movie.title}</h2>
           <p className="text-body-s text-fg-secondary">{meta}</p>
         </div>
-        {flow.remainingMs !== null && (
-          <HoldTimer remainingMs={flow.remainingMs} />
-        )}
+        <HoldTimer
+          remainingMs={flow.remainingMs ?? options.holdMinutes * 60_000}
+        />
       </header>
 
       <div className="flex flex-col gap-5 lg:flex-row lg:items-stretch">

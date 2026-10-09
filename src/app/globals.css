@@ -125,6 +125,16 @@
     overflow: hidden;
   }
 
+  dialog,
+  dialog * {
+    scrollbar-width: none;
+  }
+
+  dialog::-webkit-scrollbar,
+  dialog *::-webkit-scrollbar {
+    display: none;
+  }
+
   dialog::backdrop {
     background-color: color-mix(in oklab, var(--color-scrim) 30%, transparent);
     backdrop-filter: blur(5px);
