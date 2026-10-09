@@ -47,5 +47,6 @@ export function resolveSeatState(
   seat: Seat,
   soldCodes: ReadonlySet<string>,
 ): SeatState {
-  return soldCodes.has(seat.code) ? "sold" : seat.state;
+  if (soldCodes.has(seat.code)) return "sold";
+  return seat.state === "held" && seat.isMine ? "available" : seat.state;
 }
